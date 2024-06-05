@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import java.util.Date;
+
 @Entity
 public class Pedido {
     @Id
@@ -13,14 +14,12 @@ public class Pedido {
     private Date fechaHora;
     @NotEmpty
     private String estado;
-    @ManyToOne
-    private Usuario usuario;
 
-    public Pedido(Long id, Date fechaHora, String estado, Usuario usuario) {
+
+    public Pedido(Long id, Date fechaHora, String estado) {
         this.id = id;
         this.fechaHora = fechaHora;
         this.estado = estado;
-        this.usuario = usuario;
     }
 
     public Pedido() {
@@ -50,11 +49,4 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

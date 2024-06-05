@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-18T21:47:39-0500",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.9 (Microsoft)"
+    date = "2024-06-05T12:05:03-0500",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Oracle Corporation)"
 )
 @Component
 public class ProductMapperImpl implements ProductMapper {

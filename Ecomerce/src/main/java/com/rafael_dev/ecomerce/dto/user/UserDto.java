@@ -1,8 +1,11 @@
 package com.rafael_dev.ecomerce.dto.user;
 
+import com.rafael_dev.ecomerce.model.RoleEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Date;
 import java.util.Set;
 
 public class UserDto {
@@ -19,17 +22,24 @@ public class UserDto {
     @NotBlank
     private String password;
 
-    private Set<String> roles;
+    @NotNull
+    private Date userCreateDate;
+
+    @NotNull
+    private boolean notificationPermission = true;
+
+    private Set<RoleEntity> roles;
 
     public UserDto() {
     }
 
-    public UserDto(Long id, String email, String username, String password, Set<String> roles) {
+    public UserDto(Long id, String email, String username, String password, Date userCreateDate, boolean notificationPermission) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.roles = roles;
+        this.userCreateDate = userCreateDate;
+        this.notificationPermission = notificationPermission;
     }
 
     public Long getId() {
@@ -64,11 +74,27 @@ public class UserDto {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
+    public Date getUserCreateDate() {
+        return userCreateDate;
+    }
+
+    public void setUserCreateDate(Date userCreateDate) {
+        this.userCreateDate = userCreateDate;
+    }
+
+    public boolean isNotificationPermission() {
+        return notificationPermission;
+    }
+
+    public void setNotificationPermission(boolean notificationPermission) {
+        this.notificationPermission = notificationPermission;
+    }
+
+    public Set<RoleEntity> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
     }
 }

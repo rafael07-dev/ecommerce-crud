@@ -2,7 +2,6 @@ package com.rafael_dev.ecomerce.controller;
 
 import com.rafael_dev.ecomerce.dto.producto.ProductDto;
 import com.rafael_dev.ecomerce.service.ProductService;
-import com.rafael_dev.ecomerce.utils.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -24,7 +23,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @GetMapping("/id/{idProduct}")
+    @GetMapping("/{idProduct}")
     public ResponseEntity<ProductDto> getProductId(@PathVariable Long idProduct){
         return ResponseEntity.ok(productService.getProductById(idProduct));
     }
@@ -41,7 +40,6 @@ public class ProductController {
     }
     @DeleteMapping("/delete/{idProduct}")
     public ResponseEntity<ProductDto> deleteProduct(@PathVariable Long idProduct){
-
         return ResponseEntity.ok(productService.deleteProduct(idProduct));
     }
 

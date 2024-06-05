@@ -3,7 +3,9 @@ package com.rafael_dev.ecomerce.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -30,15 +32,24 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roles;
 
+
+    @Column(name = "fecha_creacion")
+    @NotNull
+    private Date userCreateDate;
+
+    @Column(name = "permiso_notificacion")
+    private boolean notificationPermission = true;
+
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String email, String username, String password, Set<RoleEntity> roles) {
-        this.id = id;
+    public UserEntity(String email, String username, String password, Set<RoleEntity> roles, Date userCreateDate, boolean notificationPermission) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.roles = roles;
+        this.userCreateDate = userCreateDate;
+        this.notificationPermission = notificationPermission;
     }
 
     public Long getId() {
@@ -80,4 +91,21 @@ public class UserEntity {
     public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
     }
+
+    public Date getUserCreateDate() {
+        return userCreateDate;
+    }
+
+    public void setUserCreateDate(Date userCreateDate) {
+        this.userCreateDate = userCreateDate;
+    }
+
+    public boolean isNotificationPermission() {
+        return notificationPermission;
+    }
+
+    public void setNotificationPermission(boolean notificationPermission) {
+        this.notificationPermission = notificationPermission;
+    }
+
 }

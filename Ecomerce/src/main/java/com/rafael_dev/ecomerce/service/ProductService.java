@@ -36,11 +36,11 @@ public class ProductService {
     }
 
     public ProductDto getProductById(Long id){
-        Product productOptional = productRepository.findById(id)
+        Product product = productRepository.findById(id)
                 .orElseThrow(() -> new NotFoundProduct("Product not found"));
 
         return productMapper
-                .toProductDto(productOptional);
+                .toProductDto(product);
     }
 
     public ProductDto deleteProduct(Long id){
