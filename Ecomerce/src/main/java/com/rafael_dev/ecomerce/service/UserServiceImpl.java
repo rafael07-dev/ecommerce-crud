@@ -2,9 +2,7 @@ package com.rafael_dev.ecomerce.service;
 
 import com.rafael_dev.ecomerce.dto.user.UserDto;
 import com.rafael_dev.ecomerce.mapper.UserMapper;
-import com.rafael_dev.ecomerce.model.RoleEntity;
 import com.rafael_dev.ecomerce.model.UserEntity;
-import com.rafael_dev.ecomerce.repository.RoleRepository;
 import com.rafael_dev.ecomerce.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,7 +10,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -30,10 +27,6 @@ public class UserServiceImpl implements UserDetailsService {
 
     public UserDto saveUser(UserDto userDtoRequest){
         UserEntity userEntity = userMapper.toUserEntity(userDtoRequest);
-
-
-        //Optional<RoleEntity> optionalRoleUSer = roleRepository.findByName("ROLE_USER");
-
 
         userRepository.save(userEntity);
 
