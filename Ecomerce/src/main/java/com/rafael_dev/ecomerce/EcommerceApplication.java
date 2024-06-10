@@ -73,7 +73,7 @@ public class EcommerceApplication {
                     "andrea@email.com",
                     "Andrea",
                     "$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6",
-                    Set.of(roleInvited),
+                    Set.of(roleUser),
                     new Date(),
                     true
             );
