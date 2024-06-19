@@ -4,25 +4,22 @@ import com.rafael_dev.ecomerce.dto.user.UserDto;
 import com.rafael_dev.ecomerce.mapper.UserMapper;
 import com.rafael_dev.ecomerce.model.UserEntity;
 import com.rafael_dev.ecomerce.repository.UserRepository;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserDto saveUser(UserDto userDtoRequest){
@@ -52,7 +49,7 @@ public class UserServiceImpl implements UserDetailsService {
 
         return userMapper.toUserDto(userEntity);
     }
-
+/*
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -73,5 +70,6 @@ public class UserServiceImpl implements UserDetailsService {
         return new User(userEntity.getUsername(),
                 userEntity.getPassword(),
                 grantedAuthorities);
-    }
+    }*/
+
 }

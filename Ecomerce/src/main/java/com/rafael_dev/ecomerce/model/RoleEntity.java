@@ -1,7 +1,6 @@
 package com.rafael_dev.ecomerce.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
